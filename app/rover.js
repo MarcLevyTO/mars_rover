@@ -1,5 +1,9 @@
 class Rover {
   constructor(x, y, direction, instructions) {
+    if (x < 0 || y < 0) {
+      throw new Error('Rover has bad initial positions');
+    }
+
     this.x = x;
     this.y = y;
     this.direction = direction;
@@ -95,6 +99,11 @@ class Rover {
   // Get rover's current direction
   getDirection = () => {
     return this.direction;
+  }
+
+  // Get rover's remaining instructions
+  getInstructions = () => {
+    return this.instructions;
   }
 
   // Print current direction and heading

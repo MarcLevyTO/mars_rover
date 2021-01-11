@@ -18,7 +18,7 @@ class Plateau {
         return !(position.x === roverPosition.x && position.y === roverPosition.y);
       });
 
-      while (rover.instructions.length > 0) {
+      while (rover.getInstructions().length > 0) {
         // Test if rover performing next instruction will lead to doom
         let nextPosition = rover.testInstruction();
         if (this.willCollide(roverPositions, nextPosition)) {

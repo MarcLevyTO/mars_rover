@@ -1,5 +1,3 @@
-const fs = require('fs').promises;
-
 const { getInput } = require('./input');
 
 const Plateau = require('./plateau');

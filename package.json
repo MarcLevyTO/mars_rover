@@ -4,9 +4,19 @@
   "description": "",
   "main": "app/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest --verbose ./test/*.test.js",
     "start": "node app/index.js"
   },
   "author": "Marc Levy",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "jest": "^26.6.3",
+    "mocha": "^6.2.0",
+    "sinon": "^9.2.1",
+    "supertest": "^4.0.2"
+  },
+  "jest": {
+    "verbose": true,
+    "testEnvironment": "node"
+  }
 }

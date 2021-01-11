@@ -1,10 +1,17 @@
 const fs = require('fs').promises;
 
 const getInput = async () => {
-  // Read in data from file
+  let inputString = await readFromFile();
+  return doSetup(inputString);
+}
+
+const readFromFile = async () => {  
   let data = await fs.readFile('./input.txt', 'utf8');
-  let bufferData = Buffer.from(data).toString();
-  let lines = bufferData.trim().split('\n');
+  return Buffer.from(data).toString();
+}
+
+const doSetup = (inputString) => {
+    let lines = inputString.trim().split('\n');
 
   // Create return object
   let returner = {
@@ -24,17 +31,25 @@ const getInput = async () => {
   while(rest.length > 0) {
     [landing, instructions, ...rest] = rest;
 
+    if (typeof landing === 'undefined') {
+      throw new Error('Missing rover landing information');
+    }
+
     // Get rover landing information
     let landingSplit = landing.split(':');
-    if (!landingSplit[0].includes('Rover') || !landingSplit[0].includes('Landing')) {
+    if (typeof landing === 'undefined' || !landingSplit[0].includes('Rover') || !landingSplit[0].includes('Landing')) {
       throw new Error('Missing rover landing information');
     }
     landing = landingSplit[1].trim();
 
     // Get rover instructions
+    if (typeof instructions === 'undefined') {
+      throw new Error('Missing rover instructions information');
+    }
+    
     let instructionsSplit = instructions.split(':');
     if (!instructionsSplit[0].includes('Rover') || !instructionsSplit[0].includes('Instructions')) {
-      throw new Error('Missing rover landing information');
+      throw new Error('Missing rover instructions information');
     }
     instructions = instructionsSplit[1].trim();
     
@@ -49,4 +64,4 @@ const getInput = async () => {
   return returner;
 }
 
-module.exports = { getInput };
+module.exports = { getInput, doSetup };
