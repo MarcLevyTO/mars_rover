@@ -1,22 +1,3 @@
-const directions = {
-  'north': {
-		left: 'west',
-		right: 'east'
-	},
-	'south': {
-		left: 'east',
-		right: 'west'
-	},
-	'east': {
-		left: 'north',
-		right: 'south'
-	},
-	'west': {
-		left: 'south',
-		right: 'north'
-	}
-}
-
 class Rover {
   constructor(x, y, direction, instructions) {
     this.x = x;
@@ -27,8 +8,6 @@ class Rover {
 
   // Run the next instruction
   performInstruction = () => {
-    console.log("NUM INSTRUCTIONS - BEG -> ", this.instructions.length);
-
     let instruction, rest;
     [instruction, ...rest] = this.instructions;
 
@@ -45,7 +24,6 @@ class Rover {
     }
 
     this.instructions = rest;
-    console.log("NUM INSTRUCTIONS - END -> ", this.instructions.length);
   }
 
   // Get the position of rover IF next instruction were to run
@@ -80,19 +58,16 @@ class Rover {
 
   // Perform turn left action
   turnLeft = () => {
-    console.log("turn left");
     this.direction = directions[this.direction].left;
   }
 
   // Perform turn right action
   turnRight = () => {
-    console.log("turn right");
     this.direction = directions[this.direction].right;
   }
 
   // Perform move action
   move = () => {
-    console.log("move");
     switch(this.direction) {
       case 'north':
         this.y++;
@@ -107,7 +82,6 @@ class Rover {
         this.x--;
         break;
     }
-
   }
 
   // Get rover's current position
@@ -123,16 +97,30 @@ class Rover {
     return this.direction;
   }
 
-  // Get if rover has remaining instructions
-  hasInstructions = () => {
-    return this.instructions.length > 0;
-  }
-
   // Print current direction and heading
   getOutput = () => {
     const directionTranslation = {'north': 'N', 'south': 'S', 'east': 'E', 'west': 'W'};
     return `${this.x} ${this.y} ${directionTranslation[this.direction]}`
   }
+}
+
+const directions = {
+  'north': {
+		left: 'west',
+		right: 'east'
+	},
+	'south': {
+		left: 'east',
+		right: 'west'
+	},
+	'east': {
+		left: 'north',
+		right: 'south'
+	},
+	'west': {
+		left: 'south',
+		right: 'north'
+	}
 }
 
 module.exports = Rover;
