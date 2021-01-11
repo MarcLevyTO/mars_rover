@@ -7,6 +7,7 @@ const Rover = require('./rover');
 
 const main = async () => {
   try {
+    // Get input from input.txt
     let input = await getInput();
 
     // Set up plateau
