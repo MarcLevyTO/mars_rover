@@ -1,31 +1,19 @@
 const directions = {
   'north': {
 		left: 'west',
-		right: 'east',
-		move: () => {
-      this.y++;
-		}
+		right: 'east'
 	},
 	'south': {
 		left: 'east',
-		right: 'west',
-		move: () => {
-      this.y--;
-		}
+		right: 'west'
 	},
 	'east': {
 		left: 'north',
-		right: 'south',
-		move: () => {
-      this.x++;
-		}
+		right: 'south'
 	},
 	'west': {
 		left: 'south',
-		right: 'north',
-		move: () => {
-      this.x--;
-		}
+		right: 'north'
 	}
 }
 

@@ -5,7 +5,7 @@ class Plateau {
     this.rovers = [];
   }
 
-  // 
+  // Code to get all rovers to execute instructions
   runRovers = () => { 
     // Tell each rover to run their instructions until completion
     this.rovers.forEach(rover => {
