@@ -23,7 +23,9 @@ const main = async () => {
     });
 
     // Tell each rover to perform all instructions
-    plateau.runRovers();
+    let output = plateau.runRovers();
+
+    console.log(output);
   }
   catch (error) {
     console.log(error);

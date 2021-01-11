@@ -8,6 +8,9 @@ class Plateau {
   // Code to get all rovers to execute instructions
   runRovers = () => { 
     // Tell each rover to run their instructions until completion
+    // ! - ADVANCED STRATEGY: Use a queue and have each rover execute instructions until it runs
+    // ! - into a possible collision. Then remove rover from front of queue and add to end of queue.
+    // ! - Fully remove the rover from the queue when it has finished completing all instructions.
     this.rovers.forEach(rover => {
       let roverPosition = rover.getPosition();
       let roverPositions = this.getRoverPositions().filter(position => {
@@ -35,13 +38,11 @@ class Plateau {
     });
 
     // Get final positions
-    this.rovers.forEach((rover, index) => {
-      console.log(`Rover${index+1}: ${rover.getOutput()}`)
-    })
+    let outputs = this.rovers.map((rover, index) => {
+      return `Rover${index+1}: ${rover.getOutput()}`;
+    });
 
-    // ! - ADVANCED STRATEGY: Use a queue and have each rover execute instructions until it runs
-    // ! - into a possible collision. Then remove rover from front of queue and add to end of queue.
-    // ! - Fully remove the rover from the queue when it has finished completing all instructions.
+    return outputs.join('\n');
   }
 
   // Add rovers while checking current landscape of plateau
