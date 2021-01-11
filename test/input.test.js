@@ -1,7 +1,7 @@
 const { doSetup } = require('../app/input');
 
-describe('input', function () {
-  it('should return correct info from valid input', function () {
+describe('input', () => {
+  it('should return correct info from valid input', () => {
     const given = 'Plateau: 5 5\nRover1 Landing: 1 2 N\nRover1 Instructions: LMLMLMLMM\n';
     let setup = doSetup(given);
     let expected = {
@@ -11,7 +11,7 @@ describe('input', function () {
     expect(setup).toEqual(expected);
   });
 
-  it('should throw error from invalid input on plateau', function () {
+  it('should throw error from invalid input on plateau', () => {
     const given = 'Rover1 Landing: 1 2 N\nRover1 Instructions: LMLMLMLMM\n';
     try {
       doSetup(given);
@@ -21,7 +21,7 @@ describe('input', function () {
     }
   });
 
-  it('should throw error from invalid input on landing', function () {
+  it('should throw error from invalid input on landing', () => {
     const given = 'Plateau: 5 5\nRover1 Instructions: LMLMLMLMM\n';
     try {
       doSetup(given);
@@ -31,7 +31,7 @@ describe('input', function () {
     }
   });
 
-  it('should throw error from invalid input on instructions', function () {
+  it('should throw error from invalid input on instructions', () => {
     const given = 'Plateau: 5 5\nRover1 Landing: 1 2 N\n';
     try {
       doSetup(given);

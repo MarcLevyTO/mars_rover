@@ -1,5 +1,9 @@
 class Plateau {
   constructor(width, height) {
+    if (width <= 0 || height <= 0) {
+      throw new Error('Plateau has bad initial values');
+    }
+
     this.width = width;
     this.height = height;
     this.rovers = [];
@@ -31,9 +35,6 @@ class Plateau {
         // Perform next instruction, update position
         rover.performInstruction();
         roverPosition = rover.getPosition();
-        if (roverPosition.x === undefined) {
-          throw new Error("GETS HERE");
-        }
       }
     });
 
@@ -72,7 +73,7 @@ class Plateau {
 
   // Check if rover will fall off edge of plateau
   willFall = (roverPosition) => {
-    return roverPosition.x < 0 || roverPosition.x > width || roverPosition.y < 0 || roverPosition.y > height;
+    return roverPosition.x < 0 || roverPosition.x > this.width || roverPosition.y < 0 || roverPosition.y > this.height;
   }
 
   // Get all current positions of the rovers

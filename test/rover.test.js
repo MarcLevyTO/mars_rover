@@ -1,13 +1,13 @@
 const Rover = require('../app/rover');
 
-describe('rover', function () {
-  it('should create given valid input', function () {
+describe('rover', () => {
+  it('should create given valid input', () => {
     let rover = new Rover(1, 1, 'north', []);
     expect(rover.getPosition()).toEqual({x: 1, y: 1});
     expect(rover.getDirection()).toEqual('north');
   });
 
-  it('should fail to create if x,y coordinates are negative', function(){ 
+  it('should fail to create if x,y coordinates are negative', () =>{ 
     try {
       let rover = new Rover(-1, -1, 'north', []);
     }
@@ -16,7 +16,7 @@ describe('rover', function () {
     }
   });
 
-  it('should turn correctly', function() {
+  it('should turn correctly', () => {
     let rover = new Rover(1, 1, 'north', []);
     rover.turnLeft();
     expect(rover.getDirection()).toEqual('west');
@@ -24,7 +24,7 @@ describe('rover', function () {
     expect(rover.getDirection()).toEqual('north');
   });
 
-  it('should move forward correctly', function() {
+  it('should move forward correctly', () => {
     let rover = new Rover(1, 1, 'north', []);
     rover.move();
     expect(rover.getDirection()).toEqual('north');
@@ -38,13 +38,13 @@ describe('rover', function () {
     expect(rover.getPosition()).toEqual({x: 2, y: 2});
   });
 
-  it('should test moving without moving', function() {
+  it('should test moving without moving', () => {
     let rover = new Rover(1, 1, 'north', ['move']);
     expect(rover.testInstruction()).toEqual({x: 1, y: 2});
     expect(rover.getPosition()).toEqual({x: 1, y: 1});
   });
 
-  it('should perform instructions provided', function() {
+  it('should perform instructions provided', () => {
     let rover = new Rover(1, 1, 'north', ['move', 'right', 'move']);
     expect(rover.getInstructions().length).toEqual(3);
     
